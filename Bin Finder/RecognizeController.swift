@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreMedia
 import Vision
+import AVFoundation
 
 
 class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
@@ -38,14 +39,14 @@ class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
                                     previewContainer: previewView.layer)
         
         videoCapture.imageBufferHandler = {[unowned self] (imageBuffer) in
-           /*
+           
                 // Use Vision
                 self.handleImageBufferWithVision(imageBuffer: imageBuffer)
-            */
-            
+           
+            /*
                 // Use Core ML
                 self.handleImageBufferWithCoreML(imageBuffer: imageBuffer)
-            
+*/
  
         }
     }
@@ -58,7 +59,13 @@ class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
             let prediction = try self.inceptionv3model.prediction(image: self.resize(pixelBuffer: pixelBuffer)!)
             DispatchQueue.main.async {
                 if let prob = prediction.classLabelProbs[prediction.classLabel] {
-                    self.predictLabel.text = "\(prediction.classLabel) \(String(describing: prob))"
+                    // \(String(describing: prob))   for the index of type double of probability
+                    self.predictLabel.text = "\(prediction.classLabel)"
+                    if prob < 0.5
+                                       {
+                                           print(prob)
+                                           self.predictLabel.text = "Can't recognize it"
+                                       }
                 }
             }
         }
@@ -97,9 +104,9 @@ class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
             }
             
             let classifications = observations[0...4]
-                .flatMap({ $0 as? VNClassificationObservation })
+                .compactMap({ $0 as? VNClassificationObservation })
                 .filter({ $0.confidence > 0.2 })
-                .map({ "\($0.identifier) \($0.confidence)" })
+                .map({ "\($0.identifier) " }) //\($0.confidence)
             DispatchQueue.main.async {
                 self.predictLabel.text = classifications.joined(separator: "\n")
             }
@@ -190,6 +197,36 @@ class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
         self.dismiss(animated: true) {
             main.reload()
         }
+    }
+    
+    
+    func toggleTorch() {
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+
+        if device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+
+                if device.isTorchActive {
+                    device.torchMode = .off
+                } else {
+                    device.torchMode = .on
+                }
+
+                device.unlockForConfiguration()
+            } catch {
+                print("Torch could not be used")
+            }
+        } else {
+            print("Torch is not available")
+        }
+    }
+    
+    
+    
+    @IBAction func flash(_ sender: Any) {
+        toggleTorch()
+
     }
     
     

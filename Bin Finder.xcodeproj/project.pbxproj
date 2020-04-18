@@ -20,11 +20,11 @@
 		C878919723F2A89600E51D70 /* Bin_Finder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C878919523F2A89600E51D70 /* Bin_Finder.xcdatamodeld */; };
 		C878919923F2A89700E51D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C878919823F2A89700E51D70 /* Assets.xcassets */; };
 		C878919C23F2A89700E51D70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C878919A23F2A89700E51D70 /* LaunchScreen.storyboard */; };
+		C8A26FDE244B6DE400C666E1 /* Trash_Identifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C8A26FDD244B6DE400C666E1 /* Trash_Identifier.mlmodel */; };
 		C8DD947A242974730050F598 /* VideoCameraType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9477242974730050F598 /* VideoCameraType.swift */; };
 		C8DD947B242974730050F598 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9478242974730050F598 /* VideoCapture.swift */; };
 		C8DD947C242974730050F598 /* AVCaptureDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9479242974730050F598 /* AVCaptureDevice+Extension.swift */; };
 		C8DD947E242975D40050F598 /* RecognizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD947D242975D40050F598 /* RecognizeController.swift */; };
-		C8EAF434244A38C9009AA17E /* Trash_Identifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C8EAF433244A38C9009AA17E /* Trash_Identifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,11 +44,11 @@
 		C878919823F2A89700E51D70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C878919B23F2A89700E51D70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C878919D23F2A89700E51D70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8A26FDD244B6DE400C666E1 /* Trash_Identifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Trash_Identifier.mlmodel; sourceTree = "<group>"; };
 		C8DD9477242974730050F598 /* VideoCameraType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCameraType.swift; sourceTree = "<group>"; };
 		C8DD9478242974730050F598 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		C8DD9479242974730050F598 /* AVCaptureDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+Extension.swift"; sourceTree = "<group>"; };
 		C8DD947D242975D40050F598 /* RecognizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeController.swift; sourceTree = "<group>"; };
-		C8EAF433244A38C9009AA17E /* Trash_Identifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Trash_Identifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 		C878918B23F2A89600E51D70 /* Bin Finder */ = {
 			isa = PBXGroup;
 			children = (
-				C8EAF433244A38C9009AA17E /* Trash_Identifier.mlmodel */,
+				C8A26FDD244B6DE400C666E1 /* Trash_Identifier.mlmodel */,
 				C80F031B23F6C20000128381 /* AddBinViewController.swift */,
 				C8DD9476242974730050F598 /* VideoCapture */,
 				C878918C23F2A89600E51D70 /* AppDelegate.swift */,
@@ -190,7 +190,7 @@
 				7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */,
 				C82925E723FBE0180001D3F0 /* Bins.swift in Sources */,
 				C878919123F2A89600E51D70 /* ViewController.swift in Sources */,
-				C8EAF434244A38C9009AA17E /* Trash_Identifier.mlmodel in Sources */,
+				C8A26FDE244B6DE400C666E1 /* Trash_Identifier.mlmodel in Sources */,
 				C8DD947B242974730050F598 /* VideoCapture.swift in Sources */,
 				C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */,
 				C8DD947A242974730050F598 /* VideoCameraType.swift in Sources */,

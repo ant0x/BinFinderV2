@@ -360,6 +360,17 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCi-1G-ejF">
+                                        <rect key="frame" x="356" y="0.0" width="50" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="flashlight.on.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="flash:" destination="bqG-Cz-OVx" eventType="touchUpInside" id="9Yd-d5-iam"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -432,6 +443,7 @@
     </scenes>
     <resources>
         <image name="barcode.viewfinder" catalog="system" width="64" height="56"/>
+        <image name="flashlight.on.fill" catalog="system" width="36" height="64"/>
         <image name="glassButtonSmall" width="193" height="181"/>
         <image name="mixedButton" width="193" height="181"/>
         <image name="organicButton" width="193" height="181"/>
