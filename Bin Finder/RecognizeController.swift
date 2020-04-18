@@ -14,6 +14,10 @@ import Vision
 
 class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
     
+    override open var shouldAutorotate: Bool {
+           return false
+       }
+
      
     // Outlets to label and view
     @IBOutlet private weak var predictLabel: UILabel!
@@ -21,14 +25,14 @@ class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
     
 // some properties used to control the app and store appropriate values
     
-    let inceptionv3model = Spazzatura()
+    let inceptionv3model = Trash_Identifier()
     private var videoCapture: VideoCapture!
     private var requests = [VNRequest]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVision()
-        let spec = VideoSpec(fps: 5, size: CGSize(width: 299, height: 299))
+        let spec = VideoSpec(fps: 30, size: CGSize(width: 3840, height: 2160))
         videoCapture = VideoCapture(cameraType: .back,
                                     preferredSpec: spec,
                                     previewContainer: previewView.layer)

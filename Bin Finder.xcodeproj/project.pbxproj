@@ -24,7 +24,7 @@
 		C8DD947B242974730050F598 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9478242974730050F598 /* VideoCapture.swift */; };
 		C8DD947C242974730050F598 /* AVCaptureDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9479242974730050F598 /* AVCaptureDevice+Extension.swift */; };
 		C8DD947E242975D40050F598 /* RecognizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD947D242975D40050F598 /* RecognizeController.swift */; };
-		C8DD9480242977590050F598 /* Spazzatura.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C8DD947F242977590050F598 /* Spazzatura.mlmodel */; };
+		C8EAF434244A38C9009AA17E /* Trash_Identifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C8EAF433244A38C9009AA17E /* Trash_Identifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +48,7 @@
 		C8DD9478242974730050F598 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		C8DD9479242974730050F598 /* AVCaptureDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+Extension.swift"; sourceTree = "<group>"; };
 		C8DD947D242975D40050F598 /* RecognizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeController.swift; sourceTree = "<group>"; };
-		C8DD947F242977590050F598 /* Spazzatura.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Spazzatura.mlmodel; sourceTree = "<group>"; };
+		C8EAF433244A38C9009AA17E /* Trash_Identifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Trash_Identifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +81,10 @@
 		C878918B23F2A89600E51D70 /* Bin Finder */ = {
 			isa = PBXGroup;
 			children = (
+				C8EAF433244A38C9009AA17E /* Trash_Identifier.mlmodel */,
 				C80F031B23F6C20000128381 /* AddBinViewController.swift */,
 				C8DD9476242974730050F598 /* VideoCapture */,
 				C878918C23F2A89600E51D70 /* AppDelegate.swift */,
-				C8DD947F242977590050F598 /* Spazzatura.mlmodel */,
 				C878918E23F2A89600E51D70 /* SceneDelegate.swift */,
 				C82925E623FBE0180001D3F0 /* Bins.swift */,
 				C803CE9623FB14320014D29A /* CustomButton.swift */,
@@ -186,11 +186,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8DD9480242977590050F598 /* Spazzatura.mlmodel in Sources */,
 				7F83397723FC066900171521 /* FindBins.swift in Sources */,
 				7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */,
 				C82925E723FBE0180001D3F0 /* Bins.swift in Sources */,
 				C878919123F2A89600E51D70 /* ViewController.swift in Sources */,
+				C8EAF434244A38C9009AA17E /* Trash_Identifier.mlmodel in Sources */,
 				C8DD947B242974730050F598 /* VideoCapture.swift in Sources */,
 				C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */,
 				C8DD947A242974730050F598 /* VideoCameraType.swift in Sources */,

@@ -18,6 +18,9 @@ struct VideoSpec {
 typealias ImageBufferHandler = ((_ imageBuffer: CMSampleBuffer) -> ())
 
 class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    
+    
 
     private let captureSession = AVCaptureSession()
     private var videoDevice: AVCaptureDevice!
@@ -107,6 +110,7 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             guard let superlayer = previewLayer.superlayer else {return}
             previewLayer.frame = superlayer.bounds
         }
+        
     }
     
     // =========================================================================
@@ -117,6 +121,7 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             connection.videoOrientation = .portrait
             return
         }
+        
         
         if let imageBufferHandler = imageBufferHandler
         {
