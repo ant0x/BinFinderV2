@@ -1,10 +1,10 @@
 //
-//  AppDelegate.swift
-//  CoreMLSimple
+//  VideoCapture.swift
+//  Bin Finder
 //
-//  Created by 杨萧玉 on 2017/6/9.
-//  Copyright © 2017年 杨萧玉. All rights reserved.
-//  Based on Shuichi Tsutsumi's Code
+//  Created by Antonio Baldi on 26/03/2020.
+//  Copyright © 2020 Antonio Baldi. All rights reserved.
+//
 
 import AVFoundation
 import Foundation
@@ -21,7 +21,7 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     
     
-
+    
     private let captureSession = AVCaptureSession()
     private var videoDevice: AVCaptureDevice!
     private var videoConnection: AVCaptureConnection!
@@ -33,15 +33,38 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     init(cameraType: CameraType, preferredSpec: VideoSpec?, previewContainer: CALayer?)
     {
         super.init()
-        
+        if(cameraType.captureDevice().isFocusModeSupported(.continuousAutoFocus))
+        {
+            do {
+                try cameraType.captureDevice().lockForConfiguration()
+                cameraType.captureDevice().focusMode = .continuousAutoFocus
+            }
+            catch
+            {
+                //dc
+            }
+        }
+        else if(cameraType.captureDevice().isFocusModeSupported(.autoFocus))
+        {
+            do {
+                try cameraType.captureDevice().lockForConfiguration()
+                cameraType.captureDevice().focusMode = .autoFocus
+            }
+            catch
+            {
+                //dc
+            }
+        }
         videoDevice = cameraType.captureDevice()
-
+        
+        
         // setup video format
         do {
-            captureSession.sessionPreset = AVCaptureSession.Preset.inputPriority
+            captureSession.sessionPreset = AVCaptureSession.Preset.high
             if let preferredSpec = preferredSpec {
                 // update the format with a preferred fps
                 videoDevice.updateFormatWithPreferredVideoSpec(preferredSpec: preferredSpec)
+                
             }
         }
         
@@ -81,11 +104,13 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
                 fatalError()
             }
             captureSession.addOutput(videoDataOutput)
-
+            
             videoConnection = videoDataOutput.connection(with: AVMediaType.video)
         }
         
     }
+    
+    
     
     func startCapture() {
         print("\(self.classForCoder)/" + #function)
@@ -94,7 +119,9 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             return
         }
         captureSession.startRunning()
+        
     }
+    
     
     func stopCapture() {
         print("\(self.classForCoder)/" + #function)
@@ -113,6 +140,13 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         
     }
     
+    func focus(focuspoint: CGPoint)
+    {
+        videoDevice.focusPointOfInterest = focuspoint;
+        
+    }
+    
+    
     
     // =========================================================================
     // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
@@ -129,4 +163,5 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             imageBufferHandler(sampleBuffer)
         }
     }
+    
 }

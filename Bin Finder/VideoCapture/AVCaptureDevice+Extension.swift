@@ -1,10 +1,10 @@
 //
-//  AppDelegate.swift
-//  CoreMLSimple
+//  AVCaptureDevice+Extension.swift
+//  Bin Finder
 //
-//  Created by 杨萧玉 on 2017/6/9.
-//  Copyright © 2017年 杨萧玉. All rights reserved.
-//  Based on Shuichi Tsutsumi's Code
+//  Created by Antonio Baldi on 28/03/2020.
+//  Copyright © 2020 Antonio Baldi. All rights reserved.
+//
 
 import AVFoundation
 

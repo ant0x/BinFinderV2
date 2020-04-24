@@ -2,7 +2,7 @@
 //  AddBinViewController.swift
 //  Bin Finder
 //
-//  Created by Davide Capuano on 14/02/2020.
+//  Created by Antonio Baldi on 24/04/2020.
 //  Copyright © 2020 Antonio Baldi. All rights reserved.
 //
 
@@ -19,15 +19,15 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var pickerView: UIPickerView!
     let type = ["Plastic & Metals","Paper","Glass","Mixed waste","Organic waste"]
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerView.delegate = self
         pickerView.dataSource = self
     }
-
-  
+    
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -64,5 +64,5 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             main.reload()
         }
     }
-
+    
 }
