@@ -20,6 +20,7 @@
 		C878919723F2A89600E51D70 /* Bin_Finder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C878919523F2A89600E51D70 /* Bin_Finder.xcdatamodeld */; };
 		C878919923F2A89700E51D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C878919823F2A89700E51D70 /* Assets.xcassets */; };
 		C878919C23F2A89700E51D70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C878919A23F2A89700E51D70 /* LaunchScreen.storyboard */; };
+		C87ED890245487A30003E24A /* MyObjectDetectorx.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C87ED88F245487A30003E24A /* MyObjectDetectorx.mlmodel */; };
 		C8A26FDE244B6DE400C666E1 /* Trash_Identifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C8A26FDD244B6DE400C666E1 /* Trash_Identifier.mlmodel */; };
 		C8DD947A242974730050F598 /* VideoCameraType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9477242974730050F598 /* VideoCameraType.swift */; };
 		C8DD947B242974730050F598 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9478242974730050F598 /* VideoCapture.swift */; };
@@ -44,6 +45,7 @@
 		C878919823F2A89700E51D70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C878919B23F2A89700E51D70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C878919D23F2A89700E51D70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C87ED88F245487A30003E24A /* MyObjectDetectorx.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyObjectDetectorx.mlmodel; sourceTree = "<group>"; };
 		C8A26FDD244B6DE400C666E1 /* Trash_Identifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Trash_Identifier.mlmodel; sourceTree = "<group>"; };
 		C8DD9477242974730050F598 /* VideoCameraType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCameraType.swift; sourceTree = "<group>"; };
 		C8DD9478242974730050F598 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		C878918B23F2A89600E51D70 /* Bin Finder */ = {
 			isa = PBXGroup;
 			children = (
+				C87ED88F245487A30003E24A /* MyObjectDetectorx.mlmodel */,
 				C8A26FDD244B6DE400C666E1 /* Trash_Identifier.mlmodel */,
 				C80F031B23F6C20000128381 /* AddBinViewController.swift */,
 				C8DD9476242974730050F598 /* VideoCapture */,
@@ -186,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C87ED890245487A30003E24A /* MyObjectDetectorx.mlmodel in Sources */,
 				7F83397723FC066900171521 /* FindBins.swift in Sources */,
 				7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */,
 				C82925E723FBE0180001D3F0 /* Bins.swift in Sources */,

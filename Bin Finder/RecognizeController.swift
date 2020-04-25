@@ -1,5 +1,5 @@
 //
-//  RecognizeView.swift
+//  RecognizeController.swift
 //  Bin Finder
 //
 //  Created by Antonio Baldi on 23/03/2020.
@@ -132,7 +132,7 @@ class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
 
 
 
-let inceptionv3model = Trash_Identifier()
+let TrashModel = Trash_Identifier()
 private var videoCapture: VideoCapture!
 private var requests = [VNRequest]()
 
@@ -163,7 +163,7 @@ func handleImageBufferWithCoreML(imageBuffer: CMSampleBuffer) {
         return
     }
     do {
-        let prediction = try self.inceptionv3model.prediction(image: self.resize(pixelBuffer: pixelBuffer)!)
+        let prediction = try self.TrashModel.prediction(image: self.resize(pixelBuffer: pixelBuffer)!)
         DispatchQueue.main.async {
             if let prob = prediction.classLabelProbs[prediction.classLabel] {
                 // \(String(describing: prob))   for the index of type double of probability
@@ -201,7 +201,7 @@ func handleImageBufferWithVision(imageBuffer: CMSampleBuffer) {
 }
 
 func setupVision() {
-    guard let visionModel = try? VNCoreMLModel(for: inceptionv3model.model) else {
+    guard let visionModel = try? VNCoreMLModel(for: TrashModel.model) else {
         fatalError("can't load Vision ML model")
     }
     let classificationRequest = VNCoreMLRequest(model: visionModel) { (request: VNRequest, error: Error?) in
