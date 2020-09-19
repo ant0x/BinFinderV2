@@ -44,12 +44,7 @@ class RecognizeController:  UIViewController, AVCaptureVideoDataOutputSampleBuff
         // add the blue-circle layer to the shapeLayer ImageView
         previewView.addSubview(UIVisualEffectView(effect: UIBlurEffect(style: .prominent)))
         shapeLayerPath.animation(forKey: "position")
-        
-        
-        
         previewView.layer.animation(forKey: "addSublayer")
-        
-        
         if(shapeLayerPath.superlayer != nil)
         {
             shapeLayerPath.removeFromSuperlayer()
@@ -66,14 +61,23 @@ class RecognizeController:  UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0)
         {
-                
         if touches.first != nil {
            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0)
                             {
                                 self.shapeLayerPath.removeFromSuperlayer()
                             }
-    }
+            }
         }
+        if let device = AVCaptureDevice.default(for: .video) {
+        do {
+            try device.lockForConfiguration()
+            
+            device.focusMode = .continuousAutoFocus
+        }
+            catch {
+                // just ignore
+            }
+    }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -102,7 +106,7 @@ class RecognizeController:  UIViewController, AVCaptureVideoDataOutputSampleBuff
                     
                     device.focusPointOfInterest = focusPoint
                     //device.focusMode = .ContinuousAutoFocus
-                    device.focusMode = .autoFocus
+                    //device.focusMode = .autoFocus
                     //device.focusMode = .Locked
                     device.exposurePointOfInterest = focusPoint
                     device.exposureMode = AVCaptureDevice.ExposureMode.continuousAutoExposure
