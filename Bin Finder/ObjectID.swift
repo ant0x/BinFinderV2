@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-Contains the object recognition view controller for the Breakfast Finder.
-*/
+ See LICENSE folder for this sample’s licensing information.
+ 
+ Abstract:
+ Contains the object recognition view controller for the Breakfast Finder.
+ */
 
 import UIKit
 import AVFoundation
@@ -18,7 +18,7 @@ class ObjectID: RecognizeController {
     
     @discardableResult
     func setupVision() -> NSError? {
-        // Setup Vision parts
+        // Setup Vision parts
         let error: NSError! = nil
         
         guard let modelURL = Bundle.main.url(forResource: "09092020", withExtension: "mlmodelc") else {
