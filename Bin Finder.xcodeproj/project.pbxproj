@@ -20,11 +20,8 @@
 		C878919723F2A89600E51D70 /* Bin_Finder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C878919523F2A89600E51D70 /* Bin_Finder.xcdatamodeld */; };
 		C878919923F2A89700E51D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C878919823F2A89700E51D70 /* Assets.xcassets */; };
 		C878919C23F2A89700E51D70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C878919A23F2A89700E51D70 /* LaunchScreen.storyboard */; };
-		C87ED890245487A30003E24A /* MyObjectDetectorx.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C87ED88F245487A30003E24A /* MyObjectDetectorx.mlmodel */; };
-		C8A26FDE244B6DE400C666E1 /* Trash_Identifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C8A26FDD244B6DE400C666E1 /* Trash_Identifier.mlmodel */; };
-		C8DD947A242974730050F598 /* VideoCameraType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9477242974730050F598 /* VideoCameraType.swift */; };
-		C8DD947B242974730050F598 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9478242974730050F598 /* VideoCapture.swift */; };
-		C8DD947C242974730050F598 /* AVCaptureDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD9479242974730050F598 /* AVCaptureDevice+Extension.swift */; };
+		C8C7597D2513CB5600E0DD12 /* 09092020.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C8C7597C2513CB5500E0DD12 /* 09092020.mlmodel */; };
+		C8C7597F2513E65C00E0DD12 /* ObjectID.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C7597E2513E65C00E0DD12 /* ObjectID.swift */; };
 		C8DD947E242975D40050F598 /* RecognizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8DD947D242975D40050F598 /* RecognizeController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,11 +42,8 @@
 		C878919823F2A89700E51D70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C878919B23F2A89700E51D70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C878919D23F2A89700E51D70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C87ED88F245487A30003E24A /* MyObjectDetectorx.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyObjectDetectorx.mlmodel; sourceTree = "<group>"; };
-		C8A26FDD244B6DE400C666E1 /* Trash_Identifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Trash_Identifier.mlmodel; sourceTree = "<group>"; };
-		C8DD9477242974730050F598 /* VideoCameraType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCameraType.swift; sourceTree = "<group>"; };
-		C8DD9478242974730050F598 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
-		C8DD9479242974730050F598 /* AVCaptureDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+Extension.swift"; sourceTree = "<group>"; };
+		C8C7597C2513CB5500E0DD12 /* 09092020.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = 09092020.mlmodel; sourceTree = "<group>"; };
+		C8C7597E2513E65C00E0DD12 /* ObjectID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectID.swift; sourceTree = "<group>"; };
 		C8DD947D242975D40050F598 /* RecognizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,16 +77,15 @@
 		C878918B23F2A89600E51D70 /* Bin Finder */ = {
 			isa = PBXGroup;
 			children = (
-				C87ED88F245487A30003E24A /* MyObjectDetectorx.mlmodel */,
-				C8A26FDD244B6DE400C666E1 /* Trash_Identifier.mlmodel */,
+				C8C7597C2513CB5500E0DD12 /* 09092020.mlmodel */,
 				C80F031B23F6C20000128381 /* AddBinViewController.swift */,
-				C8DD9476242974730050F598 /* VideoCapture */,
 				C878918C23F2A89600E51D70 /* AppDelegate.swift */,
 				C878918E23F2A89600E51D70 /* SceneDelegate.swift */,
 				C82925E623FBE0180001D3F0 /* Bins.swift */,
 				C803CE9623FB14320014D29A /* CustomButton.swift */,
 				C878919023F2A89600E51D70 /* ViewController.swift */,
 				C8DD947D242975D40050F598 /* RecognizeController.swift */,
+				C8C7597E2513E65C00E0DD12 /* ObjectID.swift */,
 				C878919223F2A89600E51D70 /* Main.storyboard */,
 				C878919823F2A89700E51D70 /* Assets.xcassets */,
 				C878919A23F2A89700E51D70 /* LaunchScreen.storyboard */,
@@ -103,16 +96,6 @@
 				7F83397623FC066900171521 /* FindBins.swift */,
 			);
 			path = "Bin Finder";
-			sourceTree = "<group>";
-		};
-		C8DD9476242974730050F598 /* VideoCapture */ = {
-			isa = PBXGroup;
-			children = (
-				C8DD9477242974730050F598 /* VideoCameraType.swift */,
-				C8DD9478242974730050F598 /* VideoCapture.swift */,
-				C8DD9479242974730050F598 /* AVCaptureDevice+Extension.swift */,
-			);
-			path = VideoCapture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,22 +172,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C87ED890245487A30003E24A /* MyObjectDetectorx.mlmodel in Sources */,
+				C8C7597D2513CB5600E0DD12 /* 09092020.mlmodel in Sources */,
 				7F83397723FC066900171521 /* FindBins.swift in Sources */,
 				7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */,
 				C82925E723FBE0180001D3F0 /* Bins.swift in Sources */,
 				C878919123F2A89600E51D70 /* ViewController.swift in Sources */,
-				C8A26FDE244B6DE400C666E1 /* Trash_Identifier.mlmodel in Sources */,
-				C8DD947B242974730050F598 /* VideoCapture.swift in Sources */,
 				C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */,
-				C8DD947A242974730050F598 /* VideoCameraType.swift in Sources */,
 				C8DD947E242975D40050F598 /* RecognizeController.swift in Sources */,
 				7F83397523FBF74600171521 /* RequestManager.swift in Sources */,
 				C878918F23F2A89600E51D70 /* SceneDelegate.swift in Sources */,
 				C803CE9723FB14320014D29A /* CustomButton.swift in Sources */,
 				C80F031C23F6C20000128381 /* AddBinViewController.swift in Sources */,
+				C8C7597F2513E65C00E0DD12 /* ObjectID.swift in Sources */,
 				C878919723F2A89600E51D70 /* Bin_Finder.xcdatamodeld in Sources */,
-				C8DD947C242974730050F598 /* AVCaptureDevice+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

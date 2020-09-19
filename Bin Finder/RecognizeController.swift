@@ -13,18 +13,14 @@ import Vision
 import AVFoundation
 
 
-class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
-    
+class RecognizeController:  UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     override open var shouldAutorotate: Bool {
         return false
     }
     
     
-    // Outlets to label and view
-    @IBOutlet private weak var predictLabel: UILabel!
-    @IBOutlet private weak var previewView: UIView!
     
-    @IBOutlet weak var OverlayView: UIView!
+    @IBOutlet weak var previewView: UIView!
     
     // some properties used to control the app and store appropriate values
     
@@ -34,15 +30,9 @@ class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
     
     func addRect(rect: CGRect)
     {
-        var path = UIBezierPath(rect: CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height))
+        let path = UIBezierPath(rect: CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height))
         
         rectPath = path
-        
-        
-        
-        
-        
-        
         shapeLayerPath.path = rectPath.cgPath
         //change the fill color
         shapeLayerPath.fillColor = UIColor.clear.cgColor
@@ -128,219 +118,158 @@ class RecognizeController: UIViewController, UIImagePickerControllerDelegate {
     
     
 }
-
-
-
-
-let TrashModel = Trash_Identifier()
-private var videoCapture: VideoCapture!
-private var requests = [VNRequest]()
-
-override func viewDidLoad() {
-    super.viewDidLoad()
-    setupVision()
     
-    let spec = VideoSpec(fps: 30, size: CGSize(width: 3840, height: 2160))
-    videoCapture = VideoCapture(cameraType: .back,
-                                preferredSpec: spec,
-                                previewContainer: previewView.layer)
     
-    videoCapture.imageBufferHandler = {[unowned self] (imageBuffer) in
+        var bufferSize: CGSize = .zero
+        var rootLayer: CALayer! = nil
         
-        // Use Vision
-        self.handleImageBufferWithVision(imageBuffer: imageBuffer)
+        private let session = AVCaptureSession()
+        private var previewLayer: AVCaptureVideoPreviewLayer! = nil
+        private let videoDataOutput = AVCaptureVideoDataOutput()
         
-        /*
-         // Use Core ML
-         self.handleImageBufferWithCoreML(imageBuffer: imageBuffer)
-         */
+        private let videoDataOutputQueue = DispatchQueue(label: "VideoDataOutput", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
         
-    }
-}
-
-func handleImageBufferWithCoreML(imageBuffer: CMSampleBuffer) {
-    guard let pixelBuffer = CMSampleBufferGetImageBuffer(imageBuffer) else {
-        return
-    }
-    do {
-        let prediction = try self.TrashModel.prediction(image: self.resize(pixelBuffer: pixelBuffer)!)
-        DispatchQueue.main.async {
-            if let prob = prediction.classLabelProbs[prediction.classLabel] {
-                // \(String(describing: prob))   for the index of type double of probability
-                self.predictLabel.text = "\(prediction.classLabel)"
-                if prob < 0.5
-                {
-                    print(prob)
-                    self.predictLabel.text = "Can't recognize it"
-                }
-            }
-        }
-    }
-    catch let error as NSError {
-        fatalError("Unexpected error ocurred: \(error.localizedDescription).")
-    }
-}
-
-func handleImageBufferWithVision(imageBuffer: CMSampleBuffer) {
-    guard let pixelBuffer = CMSampleBufferGetImageBuffer(imageBuffer) else {
-        return
-    }
-    
-    var requestOptions:[VNImageOption : Any] = [:]
-    
-    if let cameraIntrinsicData = CMGetAttachment(imageBuffer, key: kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix, attachmentModeOut: nil) {
-        requestOptions = [.cameraIntrinsics:cameraIntrinsicData]
-    }
-    
-    let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: CGImagePropertyOrientation(rawValue: UInt32(self.exifOrientationFromDeviceOrientation))!, options: requestOptions)
-    do {
-        try imageRequestHandler.perform(self.requests)
-    } catch {
-        print(error)
-    }
-}
-
-func setupVision() {
-    guard let visionModel = try? VNCoreMLModel(for: TrashModel.model) else {
-        fatalError("can't load Vision ML model")
-    }
-    let classificationRequest = VNCoreMLRequest(model: visionModel) { (request: VNRequest, error: Error?) in
-        guard let observations = request.results else {
-            print("no results:\(error!)")
-            return
+        func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+            // to be implemented in the subclass
         }
         
-        let classifications = observations[0...4]
-            .compactMap({ $0 as? VNClassificationObservation })
-            .filter({ $0.confidence > 0.2 })
-            .map({ "\($0.identifier) " }) //\($0.confidence)
-        DispatchQueue.main.async {
-            self.predictLabel.text = classifications.joined(separator: "\n")
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            setupAVCapture()
         }
-    }
-    classificationRequest.imageCropAndScaleOption = VNImageCropAndScaleOption.centerCrop
-    
-    self.requests = [classificationRequest]
-    
-}
-
-
-/// only support back camera
-var exifOrientationFromDeviceOrientation: Int32 {
-    let exifOrientation: DeviceOrientation
-    enum DeviceOrientation: Int32 {
-        case top0ColLeft = 1
-        case top0ColRight = 2
-        case bottom0ColRight = 3
-        case bottom0ColLeft = 4
-        case left0ColTop = 5
-        case right0ColTop = 6
-        case right0ColBottom = 7
-        case left0ColBottom = 8
-    }
-    switch UIDevice.current.orientation {
-    case .portraitUpsideDown:
-        exifOrientation = .left0ColBottom
-    case .landscapeLeft:
-        exifOrientation = .top0ColLeft
-    case .landscapeRight:
-        exifOrientation = .bottom0ColRight
-    default:
-        exifOrientation = .right0ColTop
-    }
-    return exifOrientation.rawValue
-}
-
-
-/// resize CVPixelBuffer
-///
-/// - Parameter pixelBuffer: CVPixelBuffer by camera output
-/// - Returns: CVPixelBuffer with size (299, 299)
-func resize(pixelBuffer: CVPixelBuffer) -> CVPixelBuffer? {
-    let imageSide = 299
-    var ciImage = CIImage(cvPixelBuffer: pixelBuffer, options: nil)
-    let transform = CGAffineTransform(scaleX: CGFloat(imageSide) / CGFloat(CVPixelBufferGetWidth(pixelBuffer)), y: CGFloat(imageSide) / CGFloat(CVPixelBufferGetHeight(pixelBuffer)))
-    ciImage = ciImage.transformed(by: transform).cropped(to: CGRect(x: 0, y: 0, width: imageSide, height: imageSide))
-    let ciContext = CIContext()
-    var resizeBuffer: CVPixelBuffer?
-    CVPixelBufferCreate(kCFAllocatorDefault, imageSide, imageSide, CVPixelBufferGetPixelFormatType(pixelBuffer), nil, &resizeBuffer)
-    ciContext.render(ciImage, to: resizeBuffer!)
-    return resizeBuffer
-}
-
-override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    guard let videoCapture = videoCapture else {return}
-    videoCapture.startCapture()
-}
-
-override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    guard let videoCapture = videoCapture else {return}
-    videoCapture.resizePreview()
-}
-
-override func viewWillDisappear(_ animated: Bool) {
-    guard let videoCapture = videoCapture else {return}
-    videoCapture.stopCapture()
-    
-    navigationController?.setNavigationBarHidden(false, animated: true)
-    super.viewWillDisappear(animated)
-}
-
-override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-}
-
-
-@IBAction func Back(_ sender: Any) {
-    let main = self.presentingViewController as! ViewController
-    self.dismiss(animated: true) {
-        main.reload()
-    }
-}
-
-@IBAction func Done(_ sender: Any) {
-    let main = self.presentingViewController as! ViewController
-    self.dismiss(animated: true) {
-        main.reload()
-    }
-}
-
-
-func toggleTorch() {
-    guard let device = AVCaptureDevice.default(for: .video) else { return }
-    
-    if device.hasTorch {
-        do {
-            try device.lockForConfiguration()
+        
+        override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+            // Dispose of any resources that can be recreated.
+        }
+        
+        func setupAVCapture() {
+            var deviceInput: AVCaptureDeviceInput!
             
-            if device.isTorchActive {
-                device.torchMode = .off
+            // Select a video device, make an input
+            let videoDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first
+            do {
+                deviceInput = try AVCaptureDeviceInput(device: videoDevice!)
+            } catch {
+                print("Could not create video device input: \(error)")
+                return
+            }
+            
+            session.beginConfiguration()
+            session.sessionPreset = .vga640x480 // Model image size is smaller.
+            
+            // Add a video input
+            guard session.canAddInput(deviceInput) else {
+                print("Could not add video device input to the session")
+                session.commitConfiguration()
+                return
+            }
+            session.addInput(deviceInput)
+            if session.canAddOutput(videoDataOutput) {
+                session.addOutput(videoDataOutput)
+                // Add a video data output
+                videoDataOutput.alwaysDiscardsLateVideoFrames = true
+                videoDataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
+                videoDataOutput.setSampleBufferDelegate(self, queue: videoDataOutputQueue)
             } else {
-                device.torchMode = .on
+                print("Could not add video data output to the session")
+                session.commitConfiguration()
+                return
             }
-            
-            device.unlockForConfiguration()
-        } catch {
-            print("Torch could not be used")
+            let captureConnection = videoDataOutput.connection(with: .video)
+            // Always process the frames
+            captureConnection?.isEnabled = true
+            do {
+                try  videoDevice!.lockForConfiguration()
+                let dimensions = CMVideoFormatDescriptionGetDimensions((videoDevice?.activeFormat.formatDescription)!)
+                bufferSize.width = CGFloat(dimensions.width)
+                bufferSize.height = CGFloat(dimensions.height)
+                videoDevice!.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+            session.commitConfiguration()
+            previewLayer = AVCaptureVideoPreviewLayer(session: session)
+            previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            rootLayer = previewView.layer
+            previewLayer.frame = rootLayer.bounds
+            rootLayer.addSublayer(previewLayer)
         }
-    } else {
-        print("Torch is not available")
+        
+        func startCaptureSession() {
+            session.startRunning()
+        }
+        
+        // Clean up capture setup
+        func teardownAVCapture() {
+            previewLayer.removeFromSuperlayer()
+            previewLayer = nil
+        }
+        
+        func captureOutput(_ captureOutput: AVCaptureOutput, didDrop didDropSampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+            // print("frame dropped")
+        }
+        
+        public func exifOrientationFromDeviceOrientation() -> CGImagePropertyOrientation {
+            let curDeviceOrientation = UIDevice.current.orientation
+            let exifOrientation: CGImagePropertyOrientation
+            
+            switch curDeviceOrientation {
+            case UIDeviceOrientation.portraitUpsideDown:  // Device oriented vertically, home button on the top
+                exifOrientation = .left
+            case UIDeviceOrientation.landscapeLeft:       // Device oriented horizontally, home button on the right
+                exifOrientation = .upMirrored
+            case UIDeviceOrientation.landscapeRight:      // Device oriented horizontally, home button on the left
+                exifOrientation = .down
+            case UIDeviceOrientation.portrait:            // Device oriented vertically, home button on the bottom
+                exifOrientation = .up
+            default:
+                exifOrientation = .up
+            }
+            return exifOrientation
+        }
+
+    @IBAction func Back(_ sender: Any) {
+        let main = self.presentingViewController as! ViewController
+        self.dismiss(animated: true) {
+            main.reload()
+        }
+    }
+
+    @IBAction func Done(_ sender: Any) {
+        let main = self.presentingViewController as! ViewController
+        self.dismiss(animated: true) {
+            main.reload()
+        }
+    }
+
+
+    func toggleTorch() {
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+        
+        if device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+                
+                if device.isTorchActive {
+                    device.torchMode = .off
+                } else {
+                    device.torchMode = .on
+                }
+                
+                device.unlockForConfiguration()
+            } catch {
+                print("Torch could not be used")
+            }
+        } else {
+            print("Torch is not available")
+        }
+    }
+
+
+
+    @IBAction func flash(_ sender: Any) {
+        toggleTorch()
+        
     }
 }
-
-
-
-@IBAction func flash(_ sender: Any) {
-    toggleTorch()
-    
-}
-
-
-
-
-
-}
-
-

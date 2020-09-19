@@ -164,4 +164,5 @@ class VideoCapture: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         }
     }
     
+    
 }

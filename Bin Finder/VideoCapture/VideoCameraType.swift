@@ -26,4 +26,5 @@ enum CameraType : Int {
         }
         return AVCaptureDevice.default(for: AVMediaType.video)!
     }
+    
 }
