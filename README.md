@@ -13,7 +13,7 @@ Locate folder of repository, run the following command in terminal:
 ``` bash
 pod install 
 ```
-After this open #Bin Finder.xcworkspace
+After this open `Bin Finder.xcworkspace`
 
 
 ## Requirements
