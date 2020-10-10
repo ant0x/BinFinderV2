@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bin_Finder_v2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bin_Finder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,7 +102,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mixed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt6-WM-e9Y">
-                                <rect key="frame" x="181.5" y="842.5" width="46" height="21"/>
+                                <rect key="frame" x="182" y="843" width="58" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -116,8 +116,8 @@
                                     <action selector="plasticClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pi3-5a-dIv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Plastic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsY-Eu-do2">
-                                <rect key="frame" x="257" y="842" width="73" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Plastic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsY-Eu-do2">
+                                <rect key="frame" x="257.5" y="842" width="71.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -172,7 +172,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHD-IP-IyV">
-                                <rect key="frame" x="362" y="182.5" width="44" height="44"/>
+                                <rect key="frame" x="362" y="181.5" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45.5" id="daN-oA-1y3"/>
                                 </constraints>
@@ -193,7 +193,7 @@
                             <constraint firstItem="obK-Yz-vPk" firstAttribute="bottom" secondItem="gYU-Yy-SWI" secondAttribute="bottom" id="6O0-Iv-dNI"/>
                             <constraint firstItem="sBq-5p-zkM" firstAttribute="trailing" secondItem="JPK-W4-dNV" secondAttribute="trailing" id="7eG-R3-cNz"/>
                             <constraint firstItem="gYU-Yy-SWI" firstAttribute="centerX" secondItem="gx6-Sb-VUW" secondAttribute="centerX" id="B9z-9e-qz9"/>
-                            <constraint firstItem="OHD-IP-IyV" firstAttribute="top" secondItem="nd4-TU-NX9" secondAttribute="bottom" constant="8" id="CxW-AA-9O4"/>
+                            <constraint firstItem="OHD-IP-IyV" firstAttribute="top" secondItem="nd4-TU-NX9" secondAttribute="bottom" constant="7" id="CxW-AA-9O4"/>
                             <constraint firstItem="VoJ-lZ-P71" firstAttribute="bottom" secondItem="f09-Ak-CYN" secondAttribute="bottom" id="DTY-mp-etI"/>
                             <constraint firstItem="sfu-EA-8mU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="362" id="Dlt-YV-qIq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gYU-Yy-SWI" secondAttribute="trailing" constant="19" id="HPe-Hi-3N7"/>
@@ -229,7 +229,7 @@
                             <constraint firstItem="nd4-TU-NX9" firstAttribute="leading" secondItem="OHD-IP-IyV" secondAttribute="leading" id="jBm-dU-mVX"/>
                             <constraint firstItem="sfu-EA-8mU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="37" id="jh9-zR-xx0"/>
                             <constraint firstItem="gx6-Sb-VUW" firstAttribute="top" secondItem="gYU-Yy-SWI" secondAttribute="bottom" constant="5.5" id="l9T-yr-iHp"/>
-                            <constraint firstItem="CsY-Eu-do2" firstAttribute="leading" secondItem="Rt6-WM-e9Y" secondAttribute="trailing" constant="29" id="lCk-nN-Afm"/>
+                            <constraint firstItem="CsY-Eu-do2" firstAttribute="leading" secondItem="Rt6-WM-e9Y" secondAttribute="trailing" constant="17" id="lCk-nN-Afm"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lF0-sU-nTZ"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="trailing" secondItem="sBq-5p-zkM" secondAttribute="trailing" id="lbD-Ge-Ywu"/>
                             <constraint firstItem="f09-Ak-CYN" firstAttribute="top" secondItem="obK-Yz-vPk" secondAttribute="top" id="llS-mH-j1p"/>
@@ -237,10 +237,10 @@
                             <constraint firstItem="0WA-dz-OHJ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ngh-hu-cYN"/>
                             <constraint firstItem="8K6-xj-KBA" firstAttribute="top" secondItem="VoJ-lZ-P71" secondAttribute="top" id="pKy-9s-6wW"/>
                             <constraint firstItem="gYU-Yy-SWI" firstAttribute="leading" secondItem="obK-Yz-vPk" secondAttribute="trailing" constant="8" id="piH-ap-PHw"/>
-                            <constraint firstItem="uIz-lQ-jVh" firstAttribute="baseline" secondItem="Rt6-WM-e9Y" secondAttribute="baseline" id="sst-85-KSO"/>
-                            <constraint firstItem="f09-Ak-CYN" firstAttribute="centerX" secondItem="Rt6-WM-e9Y" secondAttribute="centerX" id="uPn-nu-cdm"/>
+                            <constraint firstItem="uIz-lQ-jVh" firstAttribute="baseline" secondItem="Rt6-WM-e9Y" secondAttribute="baseline" constant="-1" id="sst-85-KSO"/>
+                            <constraint firstItem="f09-Ak-CYN" firstAttribute="centerX" secondItem="Rt6-WM-e9Y" secondAttribute="centerX" constant="-7" id="uPn-nu-cdm"/>
                             <constraint firstItem="JPK-W4-dNV" firstAttribute="top" secondItem="zJj-Ks-WxD" secondAttribute="bottom" constant="8" id="xSN-2m-XAr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CsY-Eu-do2" secondAttribute="trailing" constant="84" id="ybS-nd-i1C"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CsY-Eu-do2" secondAttribute="trailing" constant="85" id="ybS-nd-i1C"/>
                         </constraints>
                     </view>
                     <connections>
@@ -259,7 +259,7 @@
         <!--Add Bin View Controller-->
         <scene sceneID="2YN-qg-VYo">
             <objects>
-                <viewController id="OQG-B7-sXj" customClass="AddBinViewController" customModule="Bin_Finder_v2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OQG-B7-sXj" customClass="AddBinViewController" customModule="Bin_Finder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ooq-ag-zsH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -340,7 +340,7 @@
         <!--Recognizer-->
         <scene sceneID="ZgF-aA-bBb">
             <objects>
-                <viewController id="bqG-Cz-OVx" customClass="ObjectID" customModule="Bin_Finder_v2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bqG-Cz-OVx" customClass="VideoCamViewController" customModule="Bin_Finder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="70H-l9-p5O"/>
                         <viewControllerLayoutGuide type="bottom" id="KBJ-lY-aMe"/>
@@ -352,24 +352,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4E-Mn-4gg">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fYH-lo-5G2">
-                                <rect key="frame" x="337" y="815" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCi-1G-ejF">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="flashlight.on.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="flash:" destination="bqG-Cz-OVx" eventType="touchUpInside" id="9Yd-d5-iam"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="tintColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aMR-oy-JdU"/>
@@ -385,18 +367,18 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" style="done" id="BJ9-Rd-M58">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="Back:" destination="bqG-Cz-OVx" id="2ig-BF-ZWc"/>
+                                <action selector="Back:" destination="bqG-Cz-OVx" id="UK7-nh-uqj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Qox-8a-XA8">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="Done:" destination="bqG-Cz-OVx" id="aNd-vS-Ntg"/>
+                                <action selector="Done:" destination="bqG-Cz-OVx" id="wwN-d0-BSf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="previewView" destination="e4E-Mn-4gg" id="pKB-FR-tp1"/>
+                        <outlet property="previewView" destination="e4E-Mn-4gg" id="bmy-do-TDR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHI-36-K2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -426,7 +408,6 @@
     <color key="tintColor" systemColor="secondarySystemFillColor"/>
     <resources>
         <image name="barcode.viewfinder" catalog="system" width="128" height="115"/>
-        <image name="flashlight.on.fill" catalog="system" width="76" height="128"/>
         <image name="glassButtonSmall" width="193" height="181"/>
         <image name="mixedButton" width="193" height="181"/>
         <image name="organicButton" width="193" height="181"/>

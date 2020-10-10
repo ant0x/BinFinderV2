@@ -16,7 +16,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return false
     }
     
-    
+
     @IBOutlet weak var paperBtn: UIButton!
     @IBOutlet weak var plasticBtn: UIButton!
     @IBOutlet weak var mixedBtn: UIButton!
@@ -47,6 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         organicBtn.isSelected = true
         plasticBtn.isSelected = true
         
+            
     }
     
     
@@ -67,7 +68,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      */
     @IBAction func glassClick(_ sender: Any) {
         if glassBtn.isSelected {
-            print(sender)
             //fai sparire qui il pin
             let image = UIImage(named: "disableGlassButton") as UIImage?
             self.glassBtn.setImage(image, for: .normal)
@@ -149,13 +149,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let image = UIImage(named: "disablePlasticButton") as UIImage?
             self.plasticBtn.setImage(image, for: .normal)
             self.plasticBtn.isSelected = false
-            restrict(filter: "Plastic & Metals")
+            restrict(filter: "Plastic")
         } else {
             //fai apparire qui il pin
             let image = UIImage(named: "plasticButton") as UIImage?
             self.plasticBtn.setImage(image, for: .normal)
             self.plasticBtn.isSelected = true
-            grant(filter: "Plastic & Metals")
+            grant(filter: "Plastic")
         }
     }
     
@@ -165,7 +165,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var image = UIImage(named: "plasticButton") as UIImage?
         self.plasticBtn.setImage(image, for: .normal)
         self.plasticBtn.isSelected = true
-        grant(filter: "Plastic & Metals")
+        grant(filter: "Plastic")
         //paper
         image = UIImage(named: "paperButton") as UIImage?
         self.paperBtn.setImage(image, for: .normal)
@@ -186,6 +186,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.organicBtn.setImage(image, for: .normal)
         self.organicBtn.isSelected = true
         grant(filter: "Organic waste")
+        self.mapView.removeOverlays(self.mapView.overlays)
     }
     
     
@@ -196,11 +197,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor.blue
-        return renderer
-    }
+//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+//        let renderer = MKPolylineRenderer(overlay: overlay)
+//        renderer.strokeColor = UIColor.blue
+//        return renderer
+//    }
     
     //questa funzione deve essere chiamata quando lo user vuole indicazioni per arrivare al cestino
     func onIndicationRequest(sourceLocationLatitude: CLLocationDegrees, sourceLocationLongitude: CLLocationDegrees, destinationLocationLatitude: CLLocationDegrees, destinationLocationLongitude: CLLocationDegrees) {
@@ -232,7 +233,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
         
-        self.mapView.delegate = self
+//        self.mapView.delegate = self
         
     }
     
@@ -344,7 +345,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             case "Glass":
                 anView?.image = UIImage(named:"glass")
                 anView?.canShowCallout = true
-            case "Plastic & Metals":
+            case "Plastic":
                 anView?.image = UIImage(named:"plastic")
                 anView?.canShowCallout = true
             case "Mixed waste":
@@ -353,6 +354,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             case "Organic waste":
                 anView?.image = UIImage(named:"organic")
                 anView?.canShowCallout = true
+                break;
             default:
                 print("default")
             }
@@ -415,7 +417,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                      paperClick(paperBtn as Any)
                      case "Glass":
                      glassClick(glassBtn as Any)
-                     case "Plastic & Metals":
+                     case "Plastic":
                      plasticClick(plasticBtn as Any)
                      case "Mixed waste":
                      mixedClick(mixedBtn as Any)
@@ -455,6 +457,194 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     
+
     
+  
     
+    func routeeing(tipo:String)
+    {
+        var tipob = ""
+        print("Il tipo pasasto è ",tipo)
+        
+        switch tipo {
+        case "Cardboard":
+            tipob = "Paper"
+            let image = UIImage(named: "redPaperButton") as UIImage?
+            self.paperBtn.setImage(image, for: .normal)
+            break;
+        case "Glass":
+            tipob = "Glass"
+            let image = UIImage(named: "redGlassButton") as UIImage?
+            self.glassBtn.setImage(image, for: .normal)
+            break;
+        case "Metal":
+            tipob = "Plastic"
+            let image = UIImage(named: "redPlasticButton") as UIImage?
+            self.plasticBtn.setImage(image, for: .normal)
+            break;
+        case "Mixed":
+            tipob = "Mixed waste"
+            let image = UIImage(named: "redMixedButton") as UIImage?
+            self.mixedBtn.setImage(image, for: .normal)
+            break;
+        case "Organic":
+            tipob = "Organic waste"
+            let image = UIImage(named: "redOrganicButton") as UIImage?
+            self.organicBtn.setImage(image, for: .normal)
+            break;
+        case "Paper":
+            tipob = "Paper"
+            let image = UIImage(named: "redPaperButton") as UIImage?
+            self.paperBtn.setImage(image, for: .normal)
+            break;
+        case "Plastic":
+            tipob = "Plastic"
+            let image = UIImage(named: "redPlasticButton") as UIImage?
+            self.plasticBtn.setImage(image, for: .normal)
+            break;
+        case "Special":
+            tipob = "Mixed waste"
+            let image = UIImage(named: "redMixedButton") as UIImage?
+            self.mixedBtn.setImage(image, for: .normal)
+            break;
+        default:
+            tipob = "Mixed waste"
+            let image = UIImage(named: "redMixedButton") as UIImage?
+            self.mixedBtn.setImage(image, for: .normal)
+        }
+        print("Il tipo cestino è \(tipob)")
+        
+        
+        
+        
+       
+        
+        var userLocation = CLLocation(latitude: locationManager.location!.coordinate.latitude, longitude: locationManager.location!.coordinate.longitude)
+        var distances = [CLLocationDistance]()
+        
+//        for location in mapView.annotations{
+//            let coord = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//               distances.append(coord.distance(from: userLocation))
+//               print("distance = \(coord.distance(from: userLocation))")
+//           }
+//
+//           let closest = distances.min()//shortest distance
+//        let position = distances.firstIndex(of: closest!)//index of shortest distance
+//           print("closest = \(closest!), index = \(position)")
+    
+        
+        for annotation in mapView.annotations
+        {
+            print(annotation.title!!)
+            if(annotation.title == tipob)
+            {
+            let coord = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+            distances.append(coord.distance(from: userLocation))
+            print("distance = \(coord.distance(from: userLocation))")
+            }
+            else
+            {
+                distances.append(CLLocationDistance(1000000))
+            }
+        }
+        let closest = distances.min()
+        let position = distances.firstIndex(of: closest!)
+        print("closest = \(closest!), index = \(position!)")
+        print("annotation in questione è \(mapView.annotations[position!].title!!)")
+        
+        
+        
+        
+        showRouteOnMap(pickupCoordinate: locationManager.location!.coordinate, destinationCoordinate: position!)
+        
 }
+
+    // MARK: - showRouteOnMap
+
+    func showRouteOnMap(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: Int) {
+
+        let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil)
+        let destinationPlacemark = MKPlacemark(coordinate: mapView.annotations[destinationCoordinate].coordinate, addressDictionary: nil)
+
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+
+        let sourceAnnotation = MKPointAnnotation()
+
+        if let location = sourcePlacemark.location {
+            sourceAnnotation.coordinate = location.coordinate
+        }
+
+        let destinationAnnotation = MKPointAnnotation()
+
+        if let location = destinationPlacemark.location {
+            destinationAnnotation.coordinate = location.coordinate
+        }
+
+//        mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
+
+        let directionRequest = MKDirections.Request()
+        directionRequest.source = sourceMapItem
+        directionRequest.destination = destinationMapItem
+        directionRequest.transportType = .automobile
+
+        // Calculate the direction
+        let directions = MKDirections(request: directionRequest)
+
+        directions.calculate {
+            (response, error) -> Void in
+
+            guard let response = response else {
+                if let error = error {
+                    print("Error: \(error)")
+                }
+
+                return
+            }
+
+            let route = response.routes[0]
+
+            self.mapView.addOverlay((route.polyline), level: MKOverlayLevel.aboveRoads)
+
+            let rect = route.polyline.boundingMapRect
+            self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+            self.openAnnotation(annotation: self.mapView.annotations[destinationCoordinate])
+
+        }
+    }
+    func openAnnotation(annotation: MKAnnotation) {
+    _ = [mapView .selectAnnotation(annotation, animated: true)]
+    }
+
+
+    // MARK: - MKMapViewDelegate
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        let renderer = MKPolylineRenderer(overlay: overlay)
+
+        renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
+
+        renderer.lineWidth = 5.0
+
+        return renderer
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+
+        if(GlobalVar.call == "Recall")
+        {
+            resetClick(self)
+            routeeing(tipo: GlobalVar.tipo)
+            GlobalVar.call = ""
+            GlobalVar.tipo = ""
+            
+        }
+        
+    }
+   
+}
+
+
+

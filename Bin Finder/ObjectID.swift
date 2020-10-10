@@ -1,10 +1,8 @@
-/*
- See LICENSE folder for this sample’s licensing information.
- 
- Abstract:
- Contains the object recognition view controller for the Breakfast Finder.
- */
-
+//  Bin Finder
+//
+//  Created by Antonio Baldi on 23/03/2020.
+//  Copyright © 2020 Antonio Baldi. All rights reserved.
+//
 import UIKit
 import AVFoundation
 import Vision
@@ -21,8 +19,8 @@ class ObjectID: RecognizeController {
         // Setup Vision parts
         let error: NSError! = nil
         
-        guard let modelURL = Bundle.main.url(forResource: "Trash_Identifier", withExtension: "mlmodelc") else {
-            return NSError(domain: "VisionObjectRecognitionViewController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
+        guard let modelURL = Bundle.main.url(forResource: "09092020", withExtension: "mlmodelc") else {
+            return NSError(domain: "RecognizeController", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model file is missing"])
         }
         do {
             let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL))
@@ -154,5 +152,10 @@ class ObjectID: RecognizeController {
         shapeLayer.cornerRadius = 7
         return shapeLayer
     }
+    
+    
+    
+    
+      
     
 }

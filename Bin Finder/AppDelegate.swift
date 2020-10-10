@@ -8,16 +8,31 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
 
+//     MARK: - UIApplicationDelegate
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions
+      launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+      FirebaseApp.configure()
+      ImageUtilities.doBadSwizzleStuff()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+//      let videoCamViewController = VideoCamViewController()
+//
+//      UIApplication.shared.isIdleTimerDisabled = true
+//
+//      window = UIWindow(frame: UIScreen.main.bounds)
+//      window?.backgroundColor = UIColor.white
+//      window?.rootViewController = videoCamViewController
+//      window?.makeKeyAndVisible()
+      return true
     }
+    
 
     // MARK: UISceneSession Lifecycle
 
@@ -100,4 +115,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
 

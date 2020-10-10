@@ -17,7 +17,7 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     let locationManager = CLLocationManager()
     @IBOutlet weak var pickerView: UIPickerView!
-    let type = ["Plastic & Metals","Paper","Glass","Mixed waste","Organic waste"]
+    let type = ["Plastic","Paper","Glass","Mixed waste","Organic waste"]
     
     
     
@@ -48,8 +48,7 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let newBin = BinStruct(type: selected, latitude: (locationManager.location?.coordinate.latitude)!
             , longtitude: (locationManager.location?.coordinate.longitude)!)
         bins.append(newBin)
-        print("Added")
-        print(selected)
+        
         FindBins.sharedInstance.addBin(bin: newBin)
         let main = self.presentingViewController as! ViewController
         self.dismiss(animated: true) {
