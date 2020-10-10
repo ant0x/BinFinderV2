@@ -8,6 +8,12 @@
 
 ## Usage
 
+To install CocoaPods, run the following commands:
+
+```bash
+sudo gem install cocoapods
+```
+
 Locate folder of repository, run the following command in terminal:
 
 ``` bash
