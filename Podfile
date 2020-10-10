@@ -11,7 +11,6 @@ pod 'Firebase/Analytics'
 pod 'Firebase/MLCommon'
 pod 'Firebase/MLVision'
 pod 'Firebase/MLVisionObjectDetection'
-pod `MaterialComponents/List+Theming`
 pod 'MaterialComponents'
 pod 'PINRemoteImage'
 
