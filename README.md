@@ -28,7 +28,8 @@ After this open `Bin Finder.xcworkspace`
 - Minimum iOS deployment target of 10.0 or higher
 - CocoaPods 1.5 or higher
 
-
+## There are a short demo of the final result.
+  This can be useful to evaluate the dataset of ML model genuinity and accuracy.
 
 https://user-images.githubusercontent.com/43486318/158557123-2173648d-0753-4921-81e4-04a151335efd.mp4
 
